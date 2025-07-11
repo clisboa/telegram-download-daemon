@@ -32,6 +32,7 @@ TDD_VERSION="1.14"
 TELEGRAM_DAEMON_API_ID = getenv("TELEGRAM_DAEMON_API_ID")
 TELEGRAM_DAEMON_API_HASH = getenv("TELEGRAM_DAEMON_API_HASH")
 TELEGRAM_DAEMON_CHANNEL = getenv("TELEGRAM_DAEMON_CHANNEL")
+TELEGRAM_DAEMON_BOT_TOKEN = getenv("TELEGRAM_DAEMON_BOT_TOKEN")
 
 TELEGRAM_DAEMON_SESSION_PATH = getenv("TELEGRAM_DAEMON_SESSION_PATH")
 
@@ -60,6 +61,14 @@ parser.add_argument(
     default=TELEGRAM_DAEMON_API_HASH,
     help=
     'api_hash from https://core.telegram.org/api/obtaining_api_id (default is TELEGRAM_DAEMON_API_HASH env var)'
+)
+parser.add_argument(
+    "--bot-token",
+    required=TELEGRAM_DAEMON_BOT_TOKEN == None,
+    type=str,
+    default=TELEGRAM_DAEMON_BOT_TOKEN,
+    help=
+    'api_hash from https://core.telegram.org/api/obtaining_api_id (default is TELEGRAM_DAEMON_BOT_TOKEN env var)'
 )
 parser.add_argument(
     "--dest",
@@ -176,7 +185,7 @@ async def set_progress(filename, message, received, total):
 
 
 with TelegramClient(getSession(), api_id, api_hash,
-                    proxy=proxy).start() as client:
+                    proxy=proxy).start(bot_token=TELEGRAM_DAEMON_BOT_TOKEN) as client:
 
     saveSession(client.session)
 
