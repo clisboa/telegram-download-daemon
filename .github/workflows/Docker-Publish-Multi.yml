@@ -39,4 +39,4 @@ jobs:
           platforms: linux/amd64,linux/arm64,linux/arm/v7
           push: true
           repository: ${{ secrets.DOCKER_USERNAME }}/telegram-download-daemon
-          tags: alfem/telegram-download-daemon:latest
+          tags: clisboa/telegram-download-daemon:latest
