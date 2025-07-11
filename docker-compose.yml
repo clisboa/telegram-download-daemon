@@ -3,7 +3,7 @@ version: '3.5'
 services:
   telegram-download-daemon:
     #build: .
-    image: alfem/telegram-download-daemon:latest
+    image: clisboa/telegram-download-daemon:latest
     container_name: telegram-download
     read_only: true
     environment:
@@ -12,11 +12,11 @@ services:
       TELEGRAM_DAEMON_CHANNEL: "YOUR CHANNEL ID HERE"
       TELEGRAM_DAEMON_BOT_TOKEN: "YOUR BOT TOKEN HERE"
       TELEGRAM_DAEMON_DEST: "/downloads"
-      #TELEGRAM_DAEMON_SESSION_PATH: "/session"
+      TELEGRAM_DAEMON_SESSION_PATH: "/session"
       #TELEGRAM_DAEMON_WORKERS: 2
     volumes:
        - downloads:/downloads
-       #- sessions:/session
+       - sessions:/session
     restart: unless-stopped
 
 volumes:
