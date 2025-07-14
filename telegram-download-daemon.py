@@ -184,8 +184,7 @@ async def set_progress(filename, message, received, total):
         lastUpdate=currentTime
 
 
-with TelegramClient(getSession(), api_id, api_hash,
-                    proxy=proxy).start(bot_token=TELEGRAM_DAEMON_BOT_TOKEN) as client:
+with TelegramClient(getSession(), api_id, api_hash, proxy=proxy).start(bot_token=TELEGRAM_DAEMON_BOT_TOKEN) as client:
 
     saveSession(client.session)
 
