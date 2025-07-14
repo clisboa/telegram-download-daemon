@@ -40,5 +40,5 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64,linux/arm/v7
           push: true
-          repository: ${{ secrets.DOCKER_USERNAME }}/$IMAGE_NAME
+          repository: clisboa/telegram-download-daemon
           tags: clisboa/telegram-download-daemon:latest
