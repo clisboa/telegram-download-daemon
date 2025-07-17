@@ -13,7 +13,7 @@ import string
 import os.path
 from mimetypes import guess_extension
 
-from sessionManager import getSession, saveSession
+#from sessionManager import getSession, saveSession
 
 from telethon import TelegramClient, events, __version__
 from telethon.tl.types import PeerChannel, DocumentAttributeFilename, DocumentAttributeVideo
@@ -34,7 +34,7 @@ TELEGRAM_DAEMON_API_HASH = getenv("TELEGRAM_DAEMON_API_HASH")
 TELEGRAM_DAEMON_CHANNEL = getenv("TELEGRAM_DAEMON_CHANNEL")
 TELEGRAM_DAEMON_BOT_TOKEN = getenv("TELEGRAM_DAEMON_BOT_TOKEN")
 
-TELEGRAM_DAEMON_SESSION_PATH = getenv("TELEGRAM_DAEMON_SESSION_PATH")
+#TELEGRAM_DAEMON_SESSION_PATH = getenv("TELEGRAM_DAEMON_SESSION_PATH")
 
 TELEGRAM_DAEMON_DEST=getenv("TELEGRAM_DAEMON_DEST", "/telegram-downloads")
 TELEGRAM_DAEMON_TEMP=getenv("TELEGRAM_DAEMON_TEMP", "")
@@ -184,9 +184,10 @@ async def set_progress(filename, message, received, total):
         lastUpdate=currentTime
 
 
-with TelegramClient(getSession(), api_id, api_hash, proxy=proxy).start(bot_token=TELEGRAM_DAEMON_BOT_TOKEN) as client:
+#with TelegramClient(getSession(), api_id, api_hash, proxy=proxy).start(bot_token=TELEGRAM_DAEMON_BOT_TOKEN) as client:
+with TelegramClient('anon', api_id, api_hash, proxy=proxy).start(bot_token=TELEGRAM_DAEMON_BOT_TOKEN) as client:
 
-    saveSession(client.session)
+    #saveSession(client.session)
 
     queue = asyncio.Queue()
     peerChannel = PeerChannel(channel_id)
